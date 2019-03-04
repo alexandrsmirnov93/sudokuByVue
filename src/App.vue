@@ -5,7 +5,7 @@
 		<input v-for="(item2, index2) in item" class = 'field' :key = 'index2'
 			v-bind:class = '{thirdField: index2%3 == 2}'
             v-model = 'fields[index][index2].value'
-            v-on:change = 'checkIt("inField")'
+            v-on:input = 'checkIt("inField")'
 			/>
 		</div>
 		<button v-on:click = 'checkIt("inButton")'>Проверить</button>
@@ -31,7 +31,7 @@ export default {
 	}
 	this.fields = x
   },
-	methods:{
+	methods:{  
 		checkIt(param){
 			function error(){
                 if(param == 'inButton') alert('Ошибка')
