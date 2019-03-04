@@ -4,10 +4,11 @@
 			v-bind:class = '{ thirdString: index%3 ==2 }'>
 		<input v-for="(item2, index2) in item" class = 'field' :key = 'index2'
 			v-bind:class = '{thirdField: index2%3 == 2}'
-			v-model = 'fields[index][index2].value'
+            v-model = 'fields[index][index2].value'
+            v-on:change = 'checkIt("inField")'
 			/>
 		</div>
-		<button v-on:click = 'checkIt'>Проверить</button>
+		<button v-on:click = 'checkIt("inButton")'>Проверить</button>
 	</div>
 </template>
 
@@ -31,9 +32,9 @@ export default {
 	this.fields = x
   },
 	methods:{
-		checkIt(){
+		checkIt(param){
 			function error(){
-				alert('Ошибка')
+                if(param == 'inButton') alert('Ошибка')
 			}
 			
 			for(let i =0; i<this.fields.length; i++){
